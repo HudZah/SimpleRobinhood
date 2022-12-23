@@ -1,21 +1,12 @@
-const express = require("express");
+const simdaq = require("./simdaq");
+const api = require("./api");
 
-const PORT = process.env.PORT || 3001;
-
-const app = express();
-
-app.get("/tickers", (req, res) => {
-	const tickers = [
-		{ id: 0, name: "AAPL", price: 100 },
-		{ id: 1, name: "MSFT", price: 200 },
-		{ id: 2, name: "GOOG", price: 300 },
-		{ id: 3, name: "AMZN", price: 400 },
-		{ id: 4, name: "FB", price: 500 },
-	];
-
-	res.send(tickers);
+// Start SimDAQ API
+simdaq.listen(3002, () => {
+	console.log("SimDAQ API listening on port 30002");
 });
 
-app.listen(PORT, () => {
-	console.log(`Server listening on ${PORT}`);
+// Start intermediate API
+api.listen(3001, () => {
+	console.log("Intermediate API listening on port 3001");
 });
