@@ -17,10 +17,11 @@ setInterval(() => {
 			ticker.price *
 			(1 + (Math.random() - 0.5) * 0.1)
 		).toFixed(2);
+		var timestamp = new Date().getTime();
 		return {
 			...ticker,
-			price: newPrice,
-			history: [...ticker.history, newPrice],
+			price: Number(newPrice),
+			history: [...ticker.history, Number(newPrice)],
 		};
 	});
 }, 1000);

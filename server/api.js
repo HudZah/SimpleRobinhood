@@ -6,10 +6,13 @@ const port = 3001;
 
 app.get("/tickers", (req, res) => {
 	// Forward the request to the SimDAQ API
-	fetch("http://localhost:3002/tickers")
-		.then((response) => response.json())
-		.then((tickers) => res.send(tickers))
-		.catch((error) => console.error(error));
+	async function getTickers() {
+		const response = await fetch("http://localhost:3002/tickers");
+		const data = await response.json();
+		res.send(data);
+	}
+
+	getTickers();
 });
 
 module.exports = app;
