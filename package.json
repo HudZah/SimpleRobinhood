@@ -12,9 +12,7 @@
 	"dependencies": {
 		"express": "^4.18.2",
 		"highcharts": "^10.3.2",
-		"highcharts-react-official": "^3.1.0",
-		"moment": "^2.29.4",
-		"react-highcharts": "^6.0.0"
+		"highcharts-react-official": "^3.1.0"
 	},
 	"devDependencies": {
 		"@types/react-highcharts": "^16.0.3"
