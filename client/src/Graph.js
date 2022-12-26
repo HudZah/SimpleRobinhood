@@ -34,6 +34,9 @@ class Graph extends Component {
 				{
 					name: "Stock Price",
 					data: priceData,
+					marker: {
+						enabled: false,
+					},
 				},
 			],
 		};

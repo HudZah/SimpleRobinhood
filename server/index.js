@@ -3,7 +3,7 @@ const api = require("./api");
 
 // Start SimDAQ API
 simdaq.listen(3002, () => {
-	console.log("SimDAQ API listening on port 30002");
+	console.log("SimDAQ API listening on port 3002");
 });
 
 // Start intermediate API

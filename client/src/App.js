@@ -39,7 +39,7 @@ function App() {
 				<div className="graph">
 					{currentStock && currentStock.history.length > 0 ? (
 						<Graph
-							priceData={currentStock.history}
+							priceData={currentStock.history.slice(-1000)}
 							stock={stock}
 						></Graph>
 					) : (
