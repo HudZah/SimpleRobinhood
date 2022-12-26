@@ -4,7 +4,6 @@ import HighchartsReact from "highcharts-react-official";
 class Graph extends Component {
 	render() {
 		const { priceData, stock } = this.props;
-		console.log(stock);
 		const options = {
 			chart: {
 				backgroundColor: "#000",

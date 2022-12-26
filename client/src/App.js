@@ -1,12 +1,14 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Graph from "./Graph.js";
 
 function App() {
 	const AAPL = "AAPL";
+	const INTERVAL = 1000; // 1 second
 
 	const [tickersData, setTickersData] = useState([]);
 	const [stock, setStock] = useState(AAPL);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		async function getTickersData() {
@@ -16,19 +18,23 @@ function App() {
 				const data = await response.json();
 				setTickersData(data);
 			} catch (error) {
-				console.log(error);
+				setError(error);
 			}
 		}
 
 		// Send the GET request every one second.
 		const interval = setInterval(() => {
 			getTickersData();
-		}, 1000);
+		}, INTERVAL);
 
 		return () => clearInterval(interval);
 	}, []);
 
-	let currentStock = tickersData.find((ticker) => ticker.name === stock);
+	// Memoize currentStock to avoid unnecessary re-renders
+	const currentStock = useMemo(
+		() => tickersData.find((ticker) => ticker.name === stock),
+		[tickersData, stock]
+	);
 
 	return (
 		<div className="App">
@@ -37,7 +43,9 @@ function App() {
 			</div>
 			<div className="container">
 				<div className="graph">
-					{currentStock && currentStock.history.length > 0 ? (
+					{error ? (
+						<div>{error.message}</div>
+					) : currentStock && currentStock.history.length > 0 ? (
 						<Graph
 							priceData={currentStock.history.slice(-1000)}
 							stock={stock}
