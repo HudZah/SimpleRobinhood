@@ -23,6 +23,8 @@ npm start
 ```
 The app will be available at http://localhost:3000.
 
+The tickers data can be viewed at http://localhost:3001/tickers.
+
 ## Possible Improvements
 * Use of a database to persist the stock data instead of an in-memory array.
 * Use of caching to store frequently accessed data and reduce the load on the database.
