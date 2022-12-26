@@ -23,6 +23,11 @@ npm start
 ```
 The app will be available at http://localhost:3000.
 
+## Possible Improvements
+* Use of a database to persist the stock data instead of an in-memory array.
+* Use of caching to store frequently accessed data and reduce the load on the database.
+* Use of containers for ease of deployability as well as frequency. 
+
 
 ## Screenshot of running project
 
